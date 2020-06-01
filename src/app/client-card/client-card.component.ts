@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import{ClientListServiceService} from '../client-list-service.service'
+import { ClientListServiceService } from '../client-list-service.service'
+
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { OrderModalComponent } from '../order-modal/order-modal.component'
 
 @Component({
   selector: 'app-client-card',
@@ -8,19 +11,29 @@ import{ClientListServiceService} from '../client-list-service.service'
 })
 export class ClientCardComponent implements OnInit {
 
-   clientCardsData : any = [] // for storing the json
+ 
 
-  constructor(private service: ClientListServiceService) { }
+  clientCardsData: any = []
 
-  objectKeys (objeto: any) {
-    const keys = Object.keys(objeto);
-    console.log(keys); // echa un vistazo por consola para que veas lo que hace "Object.keys"
-    return keys;
- }
 
-  ngOnInit(){
-    this.service.getClients().subscribe(data =>{this.clientCardsData = data.results;
-    console.log(this.clientCardsData)})
+  public client = {
+    id: "",
+    name: ""
+  }
+
+  constructor(private service: ClientListServiceService, private modalService: NgbModal) {}
+
+  open(id, name) {
+    this.client.id = id;
+    this.client.name = name;
+    const modalRef = this.modalService.open(OrderModalComponent);
+    modalRef.componentInstance.client = this.client;
+  }
+
+  ngOnInit() {
+    this.service.getClients().subscribe(data => {
+      this.clientCardsData = data.results;
+    })
   }
 
 }
