@@ -10,6 +10,8 @@
     <br>
     <span class="blocker">Telefono: {{client.phone}}</span>
     <br>
-    <a href="#" class="btn btn-primary" style="float:right;">Ver Ordenes</a>
+    <button  class="btn btn-primary" (click)="open(client.id, client.contactName)" style="float:right;">Ver Ordenes</button>
   </div>
 </div>
+
+

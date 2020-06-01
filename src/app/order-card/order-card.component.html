@@ -1,0 +1,14 @@
+<div *ngFor="let order of clientOrdersData" class=" scrollable card w-50 mx-auto rounded border border-primary mb-4">
+    <h4 class="card-header border-primary">{{order.order.customerId}}</h4>
+    <div class="card-body">
+      <h5 class="card-text">Id: {{order.order.customerId}}</h5>
+      <span class="blocker">Codigo Postal: {{order.postalCode}}</span>
+      <br>
+      <span class="blocker">Direccion: {{order.order.customerId}}</span>
+      <br>
+      <span class="blocker">Fax: {{order.orderDetails}}</span>
+      <br>
+      <span class="blocker">Telefono: {{order.orderDetails.orderId}}</span>
+      <br>
+    </div>
+  </div>

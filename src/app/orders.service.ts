@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class ClientListServiceService {
+export class OrdersService {
 
-  private url = "http://northwind.netcore.io/query/customers.json"
+  private url = "http://northwind.netcore.io/orders.json"
 
   constructor(private http: HttpClient) { }
 
-  getClients() : Observable<any>{
+  getOrders() : Observable<any>{
     return this.http.get(this.url)}
-  }
+}

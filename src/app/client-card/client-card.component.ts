@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import{ClientListServiceService} from '../client-list-service.service'
+import { Component, OnInit, Input } from '@angular/core';
+import { ClientListServiceService } from '../client-list-service.service'
+
+import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap'
+import { OrderModalComponent } from '../order-modal/order-modal.component'
 
 @Component({
   selector: 'app-client-card',
@@ -8,19 +11,51 @@ import{ClientListServiceService} from '../client-list-service.service'
 })
 export class ClientCardComponent implements OnInit {
 
-   clientCardsData : any = [] // for storing the json
+ 
 
-  constructor(private service: ClientListServiceService) { }
+  clientCardsData: any = []
+  closeResult: string;
+  modalOptions: NgbModalOptions;
 
-  objectKeys (objeto: any) {
+  public client = {
+    id: "",
+    name: ""
+  }
+
+  constructor(private service: ClientListServiceService, private modalService: NgbModal) {
+    this.modalOptions = {
+
+    }
+  }
+
+  open(id, name) {
+    this.client.id = id;
+    this.client.name = name;
+    const modalRef = this.modalService.open(OrderModalComponent);
+    modalRef.componentInstance.client = this.client;
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  objectKeys(objeto: any) {
     const keys = Object.keys(objeto);
-    console.log(keys); // echa un vistazo por consola para que veas lo que hace "Object.keys"
+    console.log(keys);
     return keys;
- }
+  }
 
-  ngOnInit(){
-    this.service.getClients().subscribe(data =>{this.clientCardsData = data.results;
-    console.log(this.clientCardsData)})
+  ngOnInit() {
+    this.service.getClients().subscribe(data => {
+      this.clientCardsData = data.results;
+      console.log(this.clientCardsData)
+    })
   }
 
 }
