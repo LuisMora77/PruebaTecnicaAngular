@@ -35,22 +35,6 @@ export class ClientCardComponent implements OnInit {
     modalRef.componentInstance.client = this.client;
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-
-  objectKeys(objeto: any) {
-    const keys = Object.keys(objeto);
-    console.log(keys);
-    return keys;
-  }
-
   ngOnInit() {
     this.service.getClients().subscribe(data => {
       this.clientCardsData = data.results;

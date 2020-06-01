@@ -1,5 +1,6 @@
-<div *ngFor="let order of clientOrdersData" class=" scrollable card w-50 mx-auto rounded border border-primary mb-4">
-    <h4 class="card-header border-primary">{{order.order.customerId}}</h4>
+<div *ngFor="let order of clientOrdersData" class=" scrollable card w-60 mx-auto rounded border border-primary mb-4">
+  <div *ngIf="order.order.customerId == client">
+    <h4 class="card-header border-primary">Orden : {{order.order.id}}</h4>
     <div class="card-body">
       <h5 class="card-text">Id: {{order.order.customerId}}</h5>
       <span class="blocker">Codigo Postal: {{order.postalCode}}</span>
@@ -12,3 +13,4 @@
       <br>
     </div>
   </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {OrdersService} from '../orders.service'
 
 @Component({
@@ -8,6 +8,8 @@ import {OrdersService} from '../orders.service'
 })
 export class OrderCardComponent implements OnInit {
 
+  @Input() client;
+
 clientOrdersData: any = [] // for storing the json
   constructor(private service: OrdersService) { }
 
@@ -15,6 +17,7 @@ clientOrdersData: any = [] // for storing the json
     this.service.getOrders().subscribe(data =>{
       this.clientOrdersData = data.results;
       console.log(this.clientOrdersData);
+      console.log("por favoooor",this.client)
     })
   }
 
