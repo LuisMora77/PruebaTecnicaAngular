@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ClientListServiceService } from '../client-list-service.service'
 
-import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { OrderModalComponent } from '../order-modal/order-modal.component'
 
 @Component({
@@ -14,25 +14,24 @@ export class ClientCardComponent implements OnInit {
  
 
   clientCardsData: any = []
-  closeResult: string;
-  modalOptions: NgbModalOptions;
+
 
   public client = {
     id: "",
     name: ""
   }
 
-  constructor(private service: ClientListServiceService, private modalService: NgbModal) {
-    this.modalOptions = {
-
-    }
-  }
+  constructor(private service: ClientListServiceService, private modalService: NgbModal) {}
 
   open(id, name) {
     this.client.id = id;
     this.client.name = name;
     const modalRef = this.modalService.open(OrderModalComponent);
     modalRef.componentInstance.client = this.client;
+  }
+
+  cerrar() {
+    this.modalService.dismissAll(OrderModalComponent);
   }
 
   ngOnInit() {

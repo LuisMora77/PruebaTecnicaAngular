@@ -1,6 +1,9 @@
-<div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title" >{{client.id}} : {{client.name}}</h4>
+<div class="modal-header" style="size:lg">
+    <h4 class="modal-title" >{{client.id}} : {{client.name}}</h4>
     </div>
     <div class="modal-body scrollable">
 <app-order-card [client] ="client.id"></app-order-card>
     </div>
+    <div class="modal-footer">
+        <button type="button" (click)="cerrar()" class="btn btn-primary">Accept</button>
+      </div>

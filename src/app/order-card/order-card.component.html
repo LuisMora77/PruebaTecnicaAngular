@@ -3,11 +3,12 @@
     <h4 class="card-header border-primary">Orden : {{order.order.id}}</h4>
     <div class="card-body scrollable">
       <h5 class="blocker">{{order.order.shipName}}</h5>
-      <span>Fecha de entrega: {{order.order.requiredDate}}</span>
+      <span>Codigo Postal: {{order.order.shipPostalCode}}</span>
       <br>
       <span>Direccion: {{order.order.shipAddress}},{{order.order.shipCity}},{{order.order.shipCountry}}</span>
-
-      <table class="table table-striped">
+<br>
+<br>
+      <table class="table table-striped table-bordered table-sm">
         <thead>
         <tr>
           <th scope="col">ID</th>

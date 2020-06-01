@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-order-modal',
@@ -13,13 +13,14 @@ export class OrderModalComponent implements OnInit {
     id: "",
     name: ""
   }
-  closeResult = ''
   constructor(  private modalService: NgbModal) { }
+
+  cerrar() {
+    this.modalService.dismissAll(OrderModalComponent);
+  }
 
   ngOnInit() {
     this.clientData.id = this.client.id;
     this.clientData.name = this.client.name;
-    console.log(this.client);
-    console.log("ladata",this.clientData);
     }
 }

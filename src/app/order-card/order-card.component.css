@@ -1,4 +1,8 @@
 .scrollable {
-    height:150px;
+    height:250px;
     overflow-y: scroll;
   }
+
+  .resize{
+    width: 1150px;
+}
