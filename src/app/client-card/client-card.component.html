@@ -1,14 +1,14 @@
 <div *ngFor="let client of clientCardsData" class="card w-50 mx-auto rounded border border-primary mb-4">
   <h4 class="card-header border-primary">{{client.contactName}}</h4>
   <div class="card-body">
-    <h5 class="card-text">Cliente: {{client.id}}</h5>
-    <span class="blocker">Codigo Postal: {{client.postalCode}}</span>
+    <h5 class="card-text color">Cliente: {{client.id}}</h5>
+    <span class="blocker color">Codigo Postal: {{client.postalCode}}</span>
     <br>
-    <span class="blocker">Direccion: {{client.address}}</span>
+    <span class="blocker color">Direccion: {{client.address}}</span>
     <br>
-    <span class="blocker">Fax: {{client.fax}}</span>
+    <span class="blocker color">Fax: {{client.fax}}</span>
     <br>
-    <span class="blocker">Telefono: {{client.phone}}</span>
+    <span class="blocker color">Telefono: {{client.phone}}</span>
     <br>
     <button  class="btn btn-primary" (click)="open(client.id, client.contactName)" style="float:right;">Ver Ordenes</button>
   </div>
