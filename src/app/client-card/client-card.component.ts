@@ -30,10 +30,6 @@ export class ClientCardComponent implements OnInit {
     modalRef.componentInstance.client = this.client;
   }
 
-  cerrar() {
-    this.modalService.dismissAll(OrderModalComponent);
-  }
-
   ngOnInit() {
     this.service.getClients().subscribe(data => {
       this.clientCardsData = data.results;

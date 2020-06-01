@@ -10,14 +10,12 @@ export class OrderCardComponent implements OnInit {
 
   @Input() client;
 
-clientOrdersData: any = [] // for storing the json
+clientOrdersData: any = []
   constructor(private service: OrdersService) { }
 
   ngOnInit() {
     this.service.getOrders().subscribe(data =>{
       this.clientOrdersData = data.results;
-      console.log(this.clientOrdersData);
-      console.log("por favoooor",this.client)
     })
   }
 

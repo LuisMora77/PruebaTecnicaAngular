@@ -15,7 +15,7 @@ export class OrderModalComponent implements OnInit {
   }
   constructor(  private modalService: NgbModal) { }
 
-  cerrar() {
+  close() {
     this.modalService.dismissAll(OrderModalComponent);
   }
 
