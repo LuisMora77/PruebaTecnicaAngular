@@ -1,16 +1,36 @@
-<div *ngFor="let order of clientOrdersData" class=" scrollable card w-60 mx-auto rounded border border-primary mb-4">
-  <div *ngIf="order.order.customerId == client">
+<div *ngFor="let order of clientOrdersData" >
+  <div *ngIf="order.order.customerId == client" class=" card w-60 mx-auto rounded border border-primary mb-4">
     <h4 class="card-header border-primary">Orden : {{order.order.id}}</h4>
-    <div class="card-body">
-      <h5 class="card-text">Id: {{order.order.customerId}}</h5>
-      <span class="blocker">Codigo Postal: {{order.postalCode}}</span>
+    <div class="card-body scrollable">
+      <h5 class="blocker">{{order.order.shipName}}</h5>
+      <span>Fecha de entrega: {{order.order.requiredDate}}</span>
       <br>
-      <span class="blocker">Direccion: {{order.order.customerId}}</span>
-      <br>
-      <span class="blocker">Fax: {{order.orderDetails}}</span>
-      <br>
-      <span class="blocker">Telefono: {{order.orderDetails.orderId}}</span>
-      <br>
+      <span>Direccion: {{order.order.shipAddress}},{{order.order.shipCity}},{{order.order.shipCountry}}</span>
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Producto</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Descuento</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let detail of order.orderDetails">
+          <td>
+            {{ detail.orderId }}
+          </td>
+          <td>{{ detail.productId}}</td>
+          <td>{{ detail.unitPrice }}</td>
+          <td>{{ detail.quantity }}</td>
+          <td>{{ detail.discount }}</td>
+        </tr>
+        </tbody>
+      </table>
+      
     </div>
   </div>
 </div>
+

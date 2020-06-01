@@ -38,7 +38,6 @@ export class ClientCardComponent implements OnInit {
   ngOnInit() {
     this.service.getClients().subscribe(data => {
       this.clientCardsData = data.results;
-      console.log(this.clientCardsData)
     })
   }
 
